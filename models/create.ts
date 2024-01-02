@@ -8,6 +8,8 @@ import type { GeneralResponse } from "../interfaces/responses"
 const storage = new JsonDatabase();
 const manager = new BracketsManager(storage);
 
+
+
 const Create = app.get("/create", async (res, req) => {
     //http://localhost:5000/create?id=1&name=Torneo&type=single_elimination&seeding=Team1,Team2,Team3,Team4,Team5,Team6,Team7,Team8&grandfinal=simple&consolationfinal=true&divisions=1
     try {
@@ -25,7 +27,7 @@ const Create = app.get("/create", async (res, req) => {
             name: nameDeff,
             type: typeDeff,
             seeding: seedingDeff,
-            settings: { grandFinal: grandFinalDeff, consolationFinal: consolationFinalDeff, groupCount: divisionDeff, index: indexDeff },
+            settings: { grandFinal: grandFinalDeff, consolationFinal: consolationFinalDeff, groupCount: divisionDeff, index: indexDeff } as any,
         });
         const response: GeneralResponse = {
             err: false,
