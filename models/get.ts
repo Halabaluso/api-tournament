@@ -24,6 +24,7 @@ const GetTournament = app.get("/gettournament", async (res, req) => {
             })
         req.json(response)
     } catch (error) {
+        console.log(error)
         console.log("Error al obtener torneo, falta de información")
         const response: GeneralResponse = {
             err: true,
@@ -45,6 +46,7 @@ const GetAllTournaments = app.get("/getalltournaments", async (res, req) => {
             req.json(response)
         })
     } catch (error) {
+        console.log(error)
         const response: GeneralResponse = {
             err: true,
             msg: "Datos de torneo no obtenidos",
@@ -109,7 +111,6 @@ const GetTournamentData = app.get("/getbytournamentsid", async (res, req) => {
             })
 
             dataToSend.participant = participantsDeff
-            console.log(dataToSend.participant)
             const response: GeneralResponse = {
                 err: false,
                 msg: "Datos de torneo obtenidos",
@@ -118,6 +119,7 @@ const GetTournamentData = app.get("/getbytournamentsid", async (res, req) => {
             req.json(response)
         })
     } catch (error) {
+        console.log(error)
         const response: GeneralResponse = {
             err: true,
             msg: "Datos de torneo no obtenidos",
@@ -138,6 +140,7 @@ const GetAllParticipants = app.get("/getallparticipants", async (res, req) => {
             req.json(response)
         })   
     } catch (error) {
+        console.log(error)
         const response: GeneralResponse = {
             err: true,
             msg: "Datos de participantes no objetidos",

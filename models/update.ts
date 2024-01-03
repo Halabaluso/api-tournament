@@ -67,6 +67,7 @@ const UpdateTournametMatch = app.get("/updatematch", async (res, req) => {
         }
         req.json(response)
     } catch (error) {
+        console.log(error)
         console.log("Error al recargar datos de torneo, falta de información o match no encontrado")
         const response: GeneralResponse = {
             err: true,
@@ -87,6 +88,7 @@ const UpdateParticipant = app.get("/updateparticipant", async (res, req) => {
         }
         req.json(response)
     } catch (error) {
+        console.log(error)
         const response: GeneralResponse = {
             err: true,
             msg: "Nombre no cambiado",
