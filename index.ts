@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 
 try {
     const options = {
-        key: fs.readFileSync('/etc/ssl/certs/ssl_self.key'),
+        key: fs.readFileSync('/etc/ssl/private/ssl_self.key'),
         cert: fs.readFileSync('/etc/ssl/certs/ssl_self.crt'),
     };
     https.createServer(options, app).listen(port, function () {
@@ -47,6 +47,7 @@ try {
         console.log("Express server listening on port " + port);
     });
 } catch (error) {
+    console.log(error)
     app.listen(port, () => {
         console.log("Servidor HTTP servido")
         console.log(`Example app listening on port ${port}`)
