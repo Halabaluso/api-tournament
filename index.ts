@@ -39,8 +39,8 @@ app.get("/", (req, res) => {
 
 try {
     const options = {
-        key: fs.readFileSync('/etc/ssl/private/ssl_self.key'),
-        cert: fs.readFileSync('/etc/ssl/certs/ssl_self.crt'),
+        key: fs.readFileSync('/etc/letsencrypt/live/dfc2b443-d3ff-4ae3-991e-7aa9bee18c0c.clouding.host/privkey.pem'),
+        cert: fs.readFileSync('/etc/letsencrypt/live/dfc2b443-d3ff-4ae3-991e-7aa9bee18c0c.clouding.host/fullchain.pem'),
     };
     https.createServer(options, app).listen(port, function () {
         console.log("Servidor HTTPS servido")
