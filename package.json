@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node index.ts",
     "dev": "nodemon index.ts",
-    "compile": "npx tsc -p ./tsconfig.json"
+    "compile": "npx tsc -p ./tsconfig.json",
+    "start-js": "npm run "
   },
   "keywords": [],
   "author": "",

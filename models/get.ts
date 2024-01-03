@@ -109,6 +109,7 @@ const GetTournamentData = app.get("/getbytournamentsid", async (res, req) => {
             })
 
             dataToSend.participant = participantsDeff
+            console.log(dataToSend.participant)
             const response: GeneralResponse = {
                 err: false,
                 msg: "Datos de torneo obtenidos",
