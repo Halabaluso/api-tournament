@@ -1,7 +1,10 @@
 import express from "express"
+import fs from "fs"
+import https from 'https'
 import cors from "cors"
 const app = express()
 const port = process.env.PORT || 5000
+
 
 app.use(cors())
 
@@ -34,7 +37,18 @@ app.get("/", (req, res) => {
     })
 })
 
-app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
-})
-
+try {
+    const options = {
+        key: fs.readFileSync('/etc/ssl/certs/ssl_self.key'),
+        cert: fs.readFileSync('/etc/ssl/certs/ssl_self.crt'),
+    };
+    https.createServer(options, app).listen(port, function () {
+        console.log("Servidor HTTPS servido")
+        console.log("Express server listening on port " + port);
+    });
+} catch (error) {
+    app.listen(port, () => {
+        console.log("Servidor HTTP servido")
+        console.log(`Example app listening on port ${port}`)
+    })    
+}
