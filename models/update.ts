@@ -39,6 +39,7 @@ const UpdateTournametMatch = app.get("/updatematch", async (res, req) => {
     try {
         const { id, score1, score2, win } = res.query
         const idDeff = parseInt(id as string) as Id
+        console.log(idDeff)
         const score1Deff = parseInt(score1 as string) 
         const score2Deff = parseInt(score2 as string) 
         const participant1:ParticipantResult = {
@@ -60,6 +61,7 @@ const UpdateTournametMatch = app.get("/updatematch", async (res, req) => {
             opponent1: participant1,
             opponent2: participant2
         }
+        console.log(object)
         await manager.update.match(object)
         const response: GeneralResponse = {
             err: false,
