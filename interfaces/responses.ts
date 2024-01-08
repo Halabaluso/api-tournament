@@ -1,6 +1,7 @@
 interface GeneralResponse {
     err: boolean,
-    msg: string, 
+    msg: string,
+    idTournament?: number,
     servermsg?: string,
     objectmsg?: any
 }

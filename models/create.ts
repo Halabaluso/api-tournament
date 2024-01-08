@@ -32,6 +32,7 @@ const Create = app.get("/create", async (res, req) => {
         const response: GeneralResponse = {
             err: false,
             msg: "Torneo creado",
+            idTournament: idnumber
         }
         req.json(response)
     } catch (error) {

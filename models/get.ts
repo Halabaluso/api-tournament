@@ -1,4 +1,4 @@
-import { Router } from "express"
+import { Router, json } from "express"
 const app = Router()
 
 import { JsonDatabase } from "brackets-json-db"
@@ -57,6 +57,7 @@ const GetAllTournaments = app.get("/getalltournaments", async (res, req) => {
 
 const GetTournamentData = app.get("/getbytournamentsid", async (res, req) => {
     try {
+        console.log("Pasa :D")
         const { id } = res.query
         const idDeff = parseInt(id as string)
         fs.readFile(path, 'utf8', async (err, data) => {
@@ -102,11 +103,10 @@ const GetTournamentData = app.get("/getbytournamentsid", async (res, req) => {
                 }
             });
             
-            arrayParticipants.forEach(element => {
-                responsedb.participant.forEach((elemen1:any) => {
-                    if(elemen1.id === element){
-                        participantsDeff.push(elemen1)
-                    }
+            await manager.get.seeding(idDeff)
+            .then(async data => {
+                data.forEach((element: any) => {
+                    participantsDeff.push(responsedb.participant[element.id])
                 })
             })
 
